@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Github_repositories/BachelorProject-",
-      "program": "d:/Github_repositories/BachelorProject-/build/Debug/outDebug",
+      "cwd": "d:/Github_repositories/BachelorProject-/ICO_cpp",
+      "program": "d:/Github_repositories/BachelorProject-/ICO_cpp/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
