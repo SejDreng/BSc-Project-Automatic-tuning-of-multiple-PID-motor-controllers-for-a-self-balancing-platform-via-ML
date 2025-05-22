@@ -20,7 +20,7 @@ function simulateRobotArm(N, L, t, init_pos, H_poisson)
     prev_error = 0;
 
     % Simulation parameters
-    max_iterations = 9000;
+    max_iterations = 500;
     tolerance = 0.0;
     dt = 0.1;
     
@@ -138,12 +138,12 @@ function simulateRobotArm(N, L, t, init_pos, H_poisson)
         end
         
         % Random Diturbance on every joint
-        if last_iter + 100 == iter
-            D = [0.3*pi 0.3*pi];
-            last_iter = iter;
-        else 
-            D = (zeros(1, N));
-        end
+        % if last_iter + 100 == iter
+        %     D = [0.3*pi 0.3*pi];
+        %     last_iter = iter;
+        % else 
+        %     D = (zeros(1, N));
+        % end
 
         
         % Write PID values to file
@@ -178,7 +178,7 @@ function simulateRobotArm(N, L, t, init_pos, H_poisson)
         I = (1/3) * link_masses .* (arm_lengths .^ 2);  % Uniform rod about one end
         gravity_acc = gravity_torque ./ I;  % [rad/s^2]
         dt_grav = dt;
-        gravity_displacement = -(0.5 * gravity_acc * dt_grav^2); % Multiply by 0 to turn off gravity
+        gravity_displacement = -(0.5 * gravity_acc * dt_grav^2)*0; % Multiply by 0 to turn off gravity
         new_angles = gravity_displacement + D + joint_angles + direction .* motor_speed * dt;
 
         X0_prev = X0;
@@ -288,7 +288,7 @@ N = 2;
 
 L = [10 10];
 
-t = 0*pi;
+t = 0.0*pi;
 
 init_pos = [0*pi 0];
 

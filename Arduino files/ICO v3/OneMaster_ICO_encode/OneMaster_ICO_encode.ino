@@ -83,6 +83,7 @@ controlPacket transf_inner = {1, 0.0, 0.0, 0.0, 0.0, 0.0};
 
           
 float target_angle[NUM_JOINTS];                       // Target angle for each joint
+float obs_angle;
 const float angle_tolerance_deg = 8.0f;               // degrees
 
 float error[NUM_JOINTS];
@@ -176,8 +177,7 @@ void loop() {
     sBmx160SensorData_t Omagn, Ogyro, Oaccel;
     bmx160.getAllData(&Omagn, &Ogyro, &Oaccel);
 
-    transf_outer.obsAngle = atan2(Oaccel.y, Oaccel.z) * RAD_TO_DEG;
-    transf_outer.reference = target_angle[0];
+    obs_angle = atan2(Oaccel.y, Oaccel.z) * RAD_TO_DEG;
 
     // Calculate Kp, Ki, Kd using ICO
     ICO_PID();
@@ -234,7 +234,7 @@ void ICO_PID() {
   for (int i = 0; i < NUM_JOINTS; ++i) { // Loop for each joint (here, NUM_JOINTS = 1)
     // 1. Calculate Error (target - current)
     // If NUM_JOINTS > 1, obsAngle needs to be an array or fetched per joint.
-    float current_obs_angle = (i == 0) ? transf_outer.obsAngle + encoder_position: transf_outer.obsAngle; //This is currently configured for two joints, should add a commulative encoder dynamic for more joints
+    float current_obs_angle = (i == 0) ? obs_angle + encoder_position: obs_angle; //This is currently configured for two joints, should add a commulative encoder dynamic for more joints
     float raw_error = target_angle[i] - current_obs_angle;
 
     // Apply tolerance: if within, treat as zero error

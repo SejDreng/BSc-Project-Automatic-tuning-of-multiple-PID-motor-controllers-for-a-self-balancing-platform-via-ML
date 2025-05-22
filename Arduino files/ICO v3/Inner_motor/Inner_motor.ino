@@ -1,9 +1,6 @@
 #include <Wire.h>   
 #include <Adafruit_NeoPixel.h>
 #include <PID_v1.h>
-#define PIN 2
-#define NUMPIXELS 3
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);                         
 
 struct controlPacket{
   float typeID;
@@ -16,13 +13,7 @@ struct controlPacket{
   float integral;
 };
 
-struct PIDsignalpacket{
-  uint8_t typeID;
-  float u;
-};
-
 controlPacket recPacket = {1, 0.0, 0.0, 0.0, 0.0, 0.0};  
-PIDsignalpacket inputReference = {2, 0.0}; 
 float rollFloat;     
 
 double setpoint = 0;    
@@ -43,7 +34,6 @@ int shiftDirection=0;
 // Match with the master config
 const float dt_calc = 0.03f;     // Time step for calculations (seconds)
 const long loop_delay_ms = 30; // Run PID calculation every 100ms
-
 
 void setup() 
 {
@@ -124,8 +114,6 @@ void recievePacket(int pack)
   return;
 }
 
-
-
 void applyMotorOutput(double pidOutput) {
   
   int pwmValue = abs(pidOutput);
@@ -140,5 +128,3 @@ void applyMotorOutput(double pidOutput) {
     analogWrite(11, pwmValue);  // Apply PWM to motor
   }
 }
-
-
