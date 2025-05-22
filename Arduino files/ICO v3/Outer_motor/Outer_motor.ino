@@ -1,6 +1,4 @@
-#include <Wire.h>   
-#include <Adafruit_NeoPixel.h>
-#include <PID_v1.h>                  
+#include <Wire.h>               
 
 struct controlPacket{
   float typeID;
@@ -13,11 +11,8 @@ struct controlPacket{
   float integral;
 };
 
-controlPacket recPacket = {1, 0.0, 0.0, 0.0, 0.0, 0.0};  
-float rollFloat;     
-
-double setpoint = 0;    
-double input = 0;       
+controlPacket recPacket = {1, 0.0, 0.0, 0.0, 0.0, 0.0};   
+      
 double output = 0;   
 double error = 0;
 
@@ -101,8 +96,6 @@ void recievePacket(int pack)
   Kp = (double)recPacket.kp;
   Ki = (double)recPacket.ki;
   Kd = (double)recPacket.kd;
-  setpoint = (double)recPacket.reference;
-  input = (double)recPacket.obsAngle;
   error = (double)recPacket.error;
   integral = (double)recPacket.integral;
 

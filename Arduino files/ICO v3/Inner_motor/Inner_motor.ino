@@ -1,6 +1,4 @@
-#include <Wire.h>   
-#include <Adafruit_NeoPixel.h>
-#include <PID_v1.h>
+#include <Wire.h>
 
 struct controlPacket{
   float typeID;
@@ -14,10 +12,7 @@ struct controlPacket{
 };
 
 controlPacket recPacket = {1, 0.0, 0.0, 0.0, 0.0, 0.0};  
-float rollFloat;     
-
-double setpoint = 0;    
-double input = 0;       
+     
 double output = 0;   
 double error = 0;
 
@@ -67,7 +62,6 @@ void loop()
     output = -U_MAX;
   }
 
-
   // Clamping is already done on the master, this is just added redundancy for the specific controller
   bool is_saturated = fabs(output) >= U_MAX;
   bool signs_match = (error * output > 0); 
@@ -101,8 +95,6 @@ void recievePacket(int pack)
   Kp = (double)recPacket.kp;
   Ki = (double)recPacket.ki;
   Kd = (double)recPacket.kd;
-  setpoint = (double)recPacket.reference;
-  input = (double)recPacket.obsAngle;
   error = (double)recPacket.error;
   integral = (double)recPacket.integral;
 
