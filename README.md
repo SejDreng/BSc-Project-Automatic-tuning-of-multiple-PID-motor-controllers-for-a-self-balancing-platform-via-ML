@@ -2,7 +2,7 @@
 
 This repository presents a machine learning-based approach for the real-time tuning of multiple PID motor controllers on a self-balancing robotic platform. The adaptive tuning method leverages **Input Correlation (ICO) Learning**, a biologically inspired algorithm, to estimate PID gains in nonlinear and dynamic environments.
 
-## 📚 Project Overview
+## Project Overview
 
 Traditional PID tuning methods often rely on detailed system models or manual calibration, which can be limiting for nonlinear systems or dynamic environments. This project proposes a scalable, model-free alternative using ICO Learning for continuous adaptation of PID parameters in both simulation and real-world applications.
 
