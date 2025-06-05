@@ -66,7 +66,7 @@ Each version of the filtering simulation corresponds to a specific configuration
 | `Filtering_v3_*.m`             | Option 2 + Ramp disturbance                   |
 | `Filtering_v4_*.m`             | Option 1 + Ramp disturbance                   |
 
-Open `.slx` files in MATLAB Simulink to simulate behavior under various conditions.
+Open `.m` files in MATLAB to simulate behavior under various conditions.
 
 ### 2. Real-Time Implementation
 Navigate to `Arduino files/ICO v3/` for the source code deployed on a robotic arm setup using Arduino. It supports a dual-motor cascade PID controller configuration.
@@ -75,6 +75,7 @@ Navigate to `Arduino files/ICO v3/` for the source code deployed on a robotic ar
 - `Outer_motor/`: Balances the top segment.
 - `OneMaster_ICO_encode/`: Implements ICO learning and handles motor communication.
 
+#NOTE: Still under development
 ### 3. Python Visualization
 Use `PID_ICO_param_plot.ipynb` to analyze learning curves, PID parameters, and weight evolution from the `.csv` logs.
 
