@@ -16,7 +16,7 @@ Traditional PID tuning methods often rely on detailed system models or manual ca
 
 ---
 
-## 📌 Project Scope
+## Project Scope
 
 - **Objective**: To develop and validate an intelligent adaptive control framework capable of online tuning of PID parameters using biologically inspired ICO learning.
 - **Application**: Dual-motor cascade control of a robotic arm with IMU and encoder feedback.
@@ -24,7 +24,7 @@ Traditional PID tuning methods often rely on detailed system models or manual ca
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 Root/<br>
 │<br>
@@ -54,7 +54,7 @@ Root/<br>
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 ### 1. MATLAB Simulations
 Each version of the filtering simulation corresponds to a specific configuration:
@@ -81,7 +81,7 @@ Use `PID_ICO_param_plot.ipynb` to analyze learning curves, PID parameters, and w
 
 ---
 
-## 🧠 Methodology Summary
+## Methodology Summary
 
 ICO Learning is used to correlate a delayed reflex signal (e.g., error) with a predictive signal (e.g., IMU position or velocity). By adapting the control gains based on this correlation, the algorithm provides:
 
@@ -93,7 +93,7 @@ Refer to the [Final_Report.pdf](link-to-final-report-if-uploaded) for theoretica
 
 ---
 
-## 🧪 Real-Time Implementation (Arduino)
+## Real-Time Implementation (Arduino)
 
 Under `Arduino files/ICO v3/`, the following modules are available:
 
@@ -105,7 +105,7 @@ This directory contains the firmware for deploying the adaptive controller on an
 
 ---
 
-## 📊 Outputs & Logging
+## Outputs & Logging
 
 CSV logs include:
 - `pid_values.csv`: Logged PID gain values over time.
@@ -125,7 +125,7 @@ Use `PID_ICO_param_plot.ipynb` to visualize:
 
 ---
 
-## ✍️ Citation
+## Citation
 
 If you use this work in your own research or implementation, please cite:
 
@@ -133,7 +133,7 @@ If you use this work in your own research or implementation, please cite:
 
 ---
 
-## 🔧 Acknowledgments
+## Acknowledgments
 
 Supervised by Assoc. Prof. Danish Shaikh  
 Department of Electrical and Computer Engineering  
