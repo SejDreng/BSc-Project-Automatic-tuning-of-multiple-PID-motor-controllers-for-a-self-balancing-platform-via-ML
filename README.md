@@ -59,12 +59,12 @@ Root/<br>
 ### 1. MATLAB Simulations
 Each version of the filtering simulation corresponds to a specific configuration:
 
-| File                           | Configuration                                 |
-|--------------------------------|-----------------------------------------------|
-| `Filtering_v1_*.m`             | Option 2 - Standard adaptive control          |
-| `Filtering_v2_*.m`             | Option 1 - Filtered adaptive control          |
-| `Filtering_v3_*.m`             | Option 2 + Ramp disturbance                   |
-| `Filtering_v4_*.m`             | Option 1 + Ramp disturbance                   |
+| File                           | Configuration                                                |
+|--------------------------------|--------------------------------------------------------------|
+| `Filtering_v1_*.m`             | Option 2 - Filtering of Derivative Dynamic in ICO Learning   |
+| `Filtering_v2_*.m`             | Option 1 - Filtering of Derivative Learning                  |
+| `Filtering_v3_*.m`             | Option 2 + Ramp disturbance                                  |
+| `Filtering_v4_*.m`             | Option 1 + Ramp disturbance                                  |
 
 Open `.m` files in MATLAB to simulate behavior under various conditions.
 
