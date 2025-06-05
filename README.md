@@ -34,7 +34,7 @@ Root/<br>
 │ ├── Outer_motor/<br>
 │ └── OneMaster_ICO_encode/<br>
 │<br>
-├── ICO_cpp/ # C++ implementation and core logic<br>
+├── ICO_cpp/ # C++ implementation and core logic, please see [B. Porr, “Ico learning algorithm repository.”](https://github.com/berndporr/ICO-learning)<br> 
 │<br>
 ├── plots/ # Output visualizations from simulation test plots<br>
 │<br>
