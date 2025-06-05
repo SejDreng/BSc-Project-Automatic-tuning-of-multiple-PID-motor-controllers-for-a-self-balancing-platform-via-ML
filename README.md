@@ -16,32 +16,40 @@ Traditional PID tuning methods often rely on detailed system models or manual ca
 
 ---
 
+## 📌 Project Scope
+
+- **Objective**: To develop and validate an intelligent adaptive control framework capable of online tuning of PID parameters using biologically inspired ICO learning.
+- **Application**: Dual-motor cascade control of a robotic arm with IMU and encoder feedback.
+- **Approach**: Integration of Hebbian-based ICO learning with traditional PID control for enhanced robustness and autonomy.
+
+---
+
 ## 📁 Repository Structure
 
-Root/
-│
-├── Arduino files/ # Embedded implementation (Arduino)
-│ └── ICO v3/
-│ ├── Inner_motor/
-│ ├── Outer_motor/
-│ └── OneMaster_ICO_encode/
-│
-├── ICO_cpp/ # C++ implementation and core logic
-│
-├── plots/ # Output visualizations from simulation test plots
-│
-├── .vscode/ # Dev environment settings
-│
-├── Filterring_v1_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 without disturbance
-├── Filterring_v2_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 without disturbance
-├── Filterring_v3_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 with ramp disturbance
-├── Filterring_v4_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 with ramp disturbance
-│
-├── pid_values.csv # Logged PID values from Matlab
-├── ICO_values.csv # Logged ICO weights from Matlab
-├── pos_U_values.csv # System output logs (position, control effort) from Matlab
-├── PID_ICO_param_plot.ipynb # Jupyter notebook for analysis and plotting
-├── robot_arm_simulation.gif # Simulation visualization output from Matlab
+Root/<br>
+│<br>
+├── Arduino files/ # Embedded implementation (Arduino)<br>
+│ └── ICO v3/<br>
+│ ├── Inner_motor/<br>
+│ ├── Outer_motor/<br>
+│ └── OneMaster_ICO_encode/<br>
+│<br>
+├── ICO_cpp/ # C++ implementation and core logic<br>
+│<br>
+├── plots/ # Output visualizations from simulation test plots<br>
+│<br>
+├── .vscode/ # Dev environment settings<br>
+│<br>
+├── Filterring_v1_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 without disturbance<br>
+├── Filterring_v2_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 without disturbance<br>
+├── Filterring_v3_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 with ramp disturbance<br>
+├── Filterring_v4_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 with ramp disturbance<br>
+│<br>
+├── pid_values.csv # Logged PID values from Matlab<br>
+├── ICO_values.csv # Logged ICO weights from Matlab<br>
+├── pos_U_values.csv # System output logs (position, control effort) from Matlab<br>
+├── PID_ICO_param_plot.ipynb # Jupyter notebook for analysis and plotting<br>
+├── robot_arm_simulation.gif # Simulation visualization output from Matlab<br>
 
 
 ---
@@ -84,6 +92,18 @@ Refer to the [Final_Report.pdf](link-to-final-report-if-uploaded) for theoretica
 
 ---
 
+## 🧪 Real-Time Implementation (Arduino)
+
+Under `Arduino files/ICO v3/`, the following modules are available:
+
+- `Inner_motor/`: Handles inner loop PID control.
+- `Outer_motor/`: Manages outer loop PID control.
+- `OneMaster_ICO_encode/`: Implements ICO learning and manages motor communication.
+
+This directory contains the firmware for deploying the adaptive controller on an embedded system with the specifications used for the robot arm in the project.
+
+---
+
 ## 📊 Outputs & Logging
 
 CSV logs include:
@@ -92,6 +112,15 @@ CSV logs include:
 - `pos_U_values.csv`: Joint position and control effort data.
 
 Use this data for post-analysis in Python or MATLAB.
+
+---
+
+### Jupyter Notebook:
+Use `PID_ICO_param_plot.ipynb` to visualize:
+
+- Gain evolution
+- System response under various disturbances
+- ICO weight convergence
 
 ---
 
