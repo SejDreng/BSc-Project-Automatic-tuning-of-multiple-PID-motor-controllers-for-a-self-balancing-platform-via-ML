@@ -7,40 +7,23 @@ int prevA0_state;
 int prevA1_state;
 
 // TUNABLE VALUES
-const float dt_calc = 0.03f;                               // Time step for calculations (seconds)
+const float dt_calc = 0.3f;                               // Time step for calculations (seconds)
 const unsigned long ENCODER_READ_INTERVAL_MS = 1;         // Read encoder every 1 ms
-const unsigned long CONTROL_LOOP_INTERVAL_MS = 30;       // Run PID etc. every 10 ms 
+const unsigned long CONTROL_LOOP_INTERVAL_MS = 300;       // Run PID etc. every 10 ms 
 const int NUM_JOINTS = 2;                                 // Keep as 1 if using single obsAngle
 const float mu = 0.0000001f;  
 const float w0 = 1;
 const float max_change_per_cycle = 30.5f;                 // Tune this value for maximum allowed control signal change pr iteration.
 
-// Poisson Filter generated in matlab (ensure it's the same as used in MATLAB script if a comparisson if simulation comparison is wished)
-const int FILTER_LEN = 101;
+// Poisson Filter generated in matlab (ensure it's the same as used in MATLAB script if a simulation comparison is wished)
+const int FILTER_LEN = 21;
 const float H_poisson[FILTER_LEN] = {
-    0.00000000f, 0.01062212f, 0.01680249f, 0.02029530f, 0.02216432f, 
-    0.02305463f, 0.02335732f, 0.02330947f, 0.02305472f, 0.02268005f, 
-    0.02223807f, 0.02176059f, 0.02126673f, 0.02076798f, 0.02027118f, 
-    0.01978037f, 0.01929787f, 0.01882497f, 0.01836234f, 0.01791028f, 
-    0.01746887f, 0.01703804f, 0.01661767f, 0.01620755f, 0.01580749f, 
-    0.01541727f, 0.01503666f, 0.01466542f, 0.01430335f, 0.01395020f, 
-    0.01360578f, 0.01326985f, 0.01294222f, 0.01262268f, 0.01231102f, 
-    0.01200706f, 0.01171061f, 0.01142147f, 0.01113948f, 0.01086444f, 
-    0.01059620f, 0.01033458f, 0.01007942f, 0.00983055f, 0.00958784f, 
-    0.00935111f, 0.00912023f, 0.00889505f, 0.00867543f, 0.00846124f, 
-    0.00825233f, 0.00804858f, 0.00784986f, 0.00765604f, 0.00746701f, 
-    0.00728265f, 0.00710284f, 0.00692747f, 0.00675643f, 0.00658962f, 
-    0.00642692f, 0.00626824f, 0.00611347f, 0.00596253f, 0.00581532f, 
-    0.00567174f, 0.00553170f, 0.00539512f, 0.00526192f, 0.00513200f, 
-    0.00500529f, 0.00488171f, 0.00476118f, 0.00464362f, 0.00452897f, 
-    0.00441715f, 0.00430809f, 0.00420173f, 0.00409798f, 0.00399680f, 
-    0.00389812f, 0.00380188f, 0.00370801f, 0.00361646f, 0.00352717f, 
-    0.00344008f, 0.00335515f, 0.00327231f, 0.00319151f, 0.00311271f, 
-    0.00303586f, 0.00296091f, 0.00288780f, 0.00281650f, 0.00274696f, 
-    0.00267914f, 0.00261299f, 0.00254848f, 0.00248555f, 0.00242418f, 
-    0.00236433f
+    0.00000000f, 0.13780138f, 0.13529574f, 0.11704929f, 0.09942166f, 
+    0.08420485f, 0.07128412f, 0.06034155f, 0.05107814f, 0.04323672f, 
+    0.03659910f, 0.03098047f, 0.02622440f, 0.02219848f, 0.01879060f, 
+    0.01590590f, 0.01346406f, 0.01139708f, 0.00964742f, 0.00816636f, 
+    0.00691268f
 };
-
 unsigned long lastEncoderReadTime = 0;
 unsigned long lastControlLoopTime = 0;
 
@@ -133,7 +116,7 @@ void setup() {
   Serial.println("Initializing Filter and PID variables...");
 
   for (int i = 0; i < NUM_JOINTS; ++i) {
-    target_angle[i] = 0.0f; // Set initial target, can be changed later
+    target_angle[i] = .0f; // Set initial target, can be changed later
 
     // Initialize w1 terms to 1.0 as in MATLAB
     w1_kp[i] = 1.0f;
@@ -234,7 +217,7 @@ void ICO_PID() {
   for (int i = 0; i < NUM_JOINTS; ++i) { // Loop for each joint (here, NUM_JOINTS = 1)
     // 1. Calculate Error (target - current)
     // If NUM_JOINTS > 1, obsAngle needs to be an array or fetched per joint.
-    float current_obs_angle = (i == 0) ? obs_angle + encoder_position: obs_angle; //This is currently configured for two joints, should add a commulative encoder dynamic for more joints
+    float current_obs_angle = (i == 0) ? obs_angle - encoder_position: obs_angle; //This is currently configured for two joints, should add a commulative encoder dynamic for more joints
     float raw_error = target_angle[i] - current_obs_angle;
 
     // Apply tolerance: if within, treat as zero error

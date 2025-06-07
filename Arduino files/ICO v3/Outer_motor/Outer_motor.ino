@@ -55,7 +55,7 @@ void loop()
   }
   prev_U = output; // Store for next iteration
 
-  const float U_MAX = 100;
+  const float U_MAX = 255;
   if (output > U_MAX) {
     output = U_MAX;
   } else if (output< -U_MAX) {
