@@ -40,10 +40,10 @@ Root/<br>
 │<br>
 ├── .vscode/ # Dev environment settings<br>
 │<br>
-├── Filterring_v1_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 without disturbance<br>
-├── Filterring_v2_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 without disturbance<br>
-├── Filterring_v3_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 2 with ramp disturbance<br>
-├── Filterring_v4_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # Simulink: Option 1 with ramp disturbance<br>
+├── Filterring_v1_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # MATLAB: Option 2 without disturbance<br>
+├── Filterring_v2_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # MATLAB: Option 1 without disturbance<br>
+├── Filterring_v3_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # MATLAB: Option 2 with ramp disturbance<br>
+├── Filterring_v4_Multi_PID_ICO_control_simulateRobotArm_FK_angle.m # MATLAB: Option 1 with ramp disturbance<br>
 │<br>
 ├── pid_values.csv # Logged PID values from Matlab<br>
 ├── ICO_values.csv # Logged ICO weights from Matlab<br>
