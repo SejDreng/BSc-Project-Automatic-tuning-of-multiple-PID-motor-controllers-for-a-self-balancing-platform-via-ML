@@ -89,7 +89,7 @@ ICO Learning is used to correlate a delayed reflex signal (e.g., error) with a p
 - Minimal prior modeling.
 - Real-time gain convergence and tuning.
 
-Refer to the [Final_Report.pdf](link-to-final-report-if-uploaded) for theoretical formulations and stability proofs.
+Refer to the [Final_Report.pdf](https://github.com/SejDreng/BSc-Project-Automatic-tuning-of-multiple-PID-motor-controllers-for-a-self-balancing-platform-via-ML/blob/main/Final_Report.pdf) for theoretical formulations and stability proofs.
 
 ---
 
